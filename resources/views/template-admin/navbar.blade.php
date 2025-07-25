@@ -1,9 +1,102 @@
-<ul class="metismenu" id="menu">
-    <li class="menu-label">DASHBOARD</li>
-    <li>
-        <a href="/">
-            <div class="parent-icon"><i class='bx bx-home-circle'></i></div>
-            <div class="menu-title">DASHBOARD</div>
-        </a>
-    </li>
-</ul>
+<nav class="pc-sidebar">
+    <div class="navbar-wrapper">
+        <div class="m-header">
+            <a href="{{ asset('admin') }}/dashboard/index.html" class="b-brand text-primary">
+                <img src="{{ asset('env') }}/logo_text.png" alt="Logo" style="height: 40px;">
+            </a>
+        </div>
+        @if (Auth::user()->role == 'asisten')
+            <div class="navbar-content">
+                <ul class="pc-navbar">
+                    <li class="pc-item">
+                        <a href="/" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
+                            <span class="pc-mtext">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="pc-item pc-caption">
+                        <label>Data Panenpro</label>
+                        <i class="ti ti-dashboard"></i>
+                    </li>
+                    <li class="pc-item">
+                        <a href="{{ route('datamandor.index') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-user"></i></span>
+                            <span class="pc-mtext">Data Mandor</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        @endif
+
+        @if (Auth::user()->role == 'mandor')
+            <div class="navbar-content">
+                <ul class="pc-navbar">
+                    <li class="pc-item">
+                        <a href="/dashboard-mandor" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
+                            <span class="pc-mtext">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="pc-item pc-caption">
+                        <label>Data Panenpro</label>
+                        <i class="ti ti-dashboard"></i>
+                    </li>
+                    <li class="pc-item">
+                        <a href="{{ route('datapemanen.index') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-user"></i></span>
+                            <span class="pc-mtext">Data Pemanen</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="pc-navbar">
+                    <a href="{{ route('akp.index') }}" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
+                        <span class="pc-mtext">AKP</span>
+                    </a>
+                </ul>
+                <ul class="pc-navbar">
+                    <a href="{{ route('grafikkepatuhan.index') }}" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-activity"></i></span>
+                        <span class="pc-mtext">Grafik Kepatuhan</span>
+                    </a>
+                </ul>
+                <ul class="pc-navbar">
+                    <a href="{{ route('absensipemanen.index') }}" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-calendar-event"></i></span>
+                        <span class="pc-mtext">Absensi Pemanen</span>
+                    </a>
+                </ul>
+                <ul class="pc-navbar">
+                    <a href="{{ route('absensiberkala.index') }}" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-calendar-event"></i></span>
+                        <span class="pc-mtext">Absensi Berkala</span>
+                    </a>
+                </ul>
+            </div>
+        @endif
+
+        @if (Auth::user()->role == 'pemanen')
+            <div class="navbar-content">
+                <ul class="pc-navbar">
+                    <li class="pc-item">
+                        <a href="/dashboard-pemanen" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
+                            <span class="pc-mtext">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="pc-item pc-caption">
+                        <label>Data Panenpro</label>
+                        <i class="ti ti-dashboard"></i>
+                    </li>
+                    <li class="pc-item">
+                        <a href="{{ route('datapanen.index') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
+                            <span class="pc-mtext">Data Panen</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        @endif
+    </div>
+</nav>

@@ -1,442 +1,196 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+<!-- [Head] start -->
 
 <head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!--favicon-->
-	<link rel="icon" href="{{ asset('env') }}/logotangkas.png" type="image/png"/>
-	<!--plugins-->
-	<link href="{{ asset('admin') }}/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
-	<link href="{{ asset('admin') }}/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-	<link href="{{ asset('admin') }}/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-	<link href="{{ asset('admin') }}/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet"/>
-	<!-- loader-->
-	<link href="{{ asset('admin') }}/assets/css/pace.min.css" rel="stylesheet"/>
-	<script src="{{ asset('admin') }}/assets/js/pace.min.js"></script>
-	<!-- Bootstrap CSS -->
-	<link href="{{ asset('admin') }}/assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="{{ asset('admin') }}/assets/css/bootstrap-extended.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-	<link href="{{ asset('admin') }}/assets/css/app.css" rel="stylesheet">
-	<link href="{{ asset('admin') }}/assets/css/icons.css" rel="stylesheet">
-	<!-- Theme Style CSS -->
-	<link rel="stylesheet" href="{{ asset('admin') }}/assets/css/dark-theme.css"/>
-	<link rel="stylesheet" href="{{ asset('admin') }}/assets/css/semi-dark.css"/>
-	<link rel="stylesheet" href="{{ asset('admin') }}/assets/css/header-colors.css"/>
+    <title>Home | Panenpro</title>
+    <!-- [Meta] -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description"
+        content="Mantis is made using Bootstrap 5 design framework. Download the free admin template & use it for your project.">
+    <meta name="keywords"
+        content="Mantis, Dashboard UI Kit, Bootstrap 5, Admin Template, Admin Dashboard, CRM, CMS, Bootstrap Admin Template">
+    <meta name="author" content="CodedThemes">
+
+    <!-- [Favicon] icon -->
+    <link rel="icon" href="{{ asset('env') }}/logo.png" type="image/x-icon">
+    <!-- [Google Font] Family -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap"
+        id="main-font-link">
+    <!-- [Tabler Icons] https://tablericons.com -->
+    <link rel="stylesheet" href="{{ asset('admin') }}/assets/fonts/tabler-icons.min.css">
+    <!-- [Feather Icons] https://feathericons.com -->
+    <link rel="stylesheet" href="{{ asset('admin') }}/assets/fonts/feather.css">
+    <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+    <link rel="stylesheet" href="{{ asset('admin') }}/assets/fonts/fontawesome.css">
+    <!-- [Material Icons] https://fonts.google.com/icons -->
+    <link rel="stylesheet" href="{{ asset('admin') }}/assets/fonts/material.css">
+    <!-- [Template CSS Files] -->
+    <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/style.css" id="main-style-link">
+    <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/style-preset.css">
     @yield('style')
-	<title>Dashboard</title>
+
 </head>
+<!-- [Head] end -->
+<!-- [Body] Start -->
 
-<body>
-    <!--wrapper-->
-    <div class="wrapper">
-        <!--sidebar wrapper -->
-        <div class="sidebar-wrapper" data-simplebar="true">
-            <div class="sidebar-header">
-				<div>
-					{{-- <img src="{{ asset('env') }}/logotangkas.png" class="logo-icon" alt="logo icon"> --}}
-				</div>
-				<div>
-					<h4 class="logo-text">Dashboard</h4>
-				</div>
-				<div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
-				</div>
-			</div>
-            <!--navigation-->
-            @include('template-admin.navbar')
-
-            <!--end navigation-->
+<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
         </div>
-        <!--end sidebar wrapper -->
-        <!--start header -->
-        <header>
-			<div class="topbar d-flex align-items-center">
-				<nav class="navbar navbar-expand">
-					<div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
-					</div>
-					{{-- <div class="search-bar flex-grow-1">
-						<div class="position-relative search-bar-box">
-							<input type="text" class="form-control search-control" placeholder="Type to search..."> <span class="position-absolute top-50 search-show translate-middle-y"><i class='bx bx-search'></i></span>
-							<span class="position-absolute top-50 search-close translate-middle-y"><i class='bx bx-x'></i></span>
-						</div>
-					</div> --}}
-					<div class="top-menu ms-auto">
-						<ul class="navbar-nav align-items-center">
-							{{-- <li class="nav-item mobile-search-icon">
-								<a class="nav-link" href="#">	<i class='bx bx-search'></i>
-								</a>
-							</li> --}}
-							
-							<li class="nav-item dropdown dropdown-large">
-								<a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									{{-- <i class='bx bx-bell'></i> --}}
-								</a>
-								<div class="dropdown-menu dropdown-menu-end">
-									<a href="javascript:;">
-										<div class="msg-header">
-											<p class="msg-header-title">Notifications</p>
-											<p class="msg-header-clear ms-auto">Marks all as read</p>
-										</div>
-									</a>
-									<div class="header-notifications-list">
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="notify bg-light-primary text-primary"><i class="bx bx-group"></i>
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">New Customers<span class="msg-time float-end">14 Sec
-												ago</span></h6>
-													<p class="msg-info">5 new user registered</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="notify bg-light-danger text-danger"><i class="bx bx-cart-alt"></i>
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">New Orders <span class="msg-time float-end">2 min
-												ago</span></h6>
-													<p class="msg-info">You have recived new orders</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="notify bg-light-success text-success"><i class="bx bx-file"></i>
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">24 PDF File<span class="msg-time float-end">19 min
-												ago</span></h6>
-													<p class="msg-info">The pdf files generated</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="notify bg-light-warning text-warning"><i class="bx bx-send"></i>
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Time Response <span class="msg-time float-end">28 min
-												ago</span></h6>
-													<p class="msg-info">5.1 min avarage time response</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="notify bg-light-info text-info"><i class="bx bx-home-circle"></i>
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">New Product Approved <span
-												class="msg-time float-end">2 hrs ago</span></h6>
-													<p class="msg-info">Your new product has approved</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="notify bg-light-danger text-danger"><i class="bx bx-message-detail"></i>
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">New Comments <span class="msg-time float-end">4 hrs
-												ago</span></h6>
-													<p class="msg-info">New customer comments recived</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="notify bg-light-success text-success"><i class='bx bx-check-square'></i>
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Your item is shipped <span class="msg-time float-end">5 hrs
-												ago</span></h6>
-													<p class="msg-info">Successfully shipped your item</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="notify bg-light-primary text-primary"><i class='bx bx-user-pin'></i>
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">New 24 authors<span class="msg-time float-end">1 day
-												ago</span></h6>
-													<p class="msg-info">24 new authors joined last week</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="notify bg-light-warning text-warning"><i class='bx bx-door-open'></i>
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Defense Alerts <span class="msg-time float-end">2 weeks
-												ago</span></h6>
-													<p class="msg-info">45% less alerts last 4 weeks</p>
-												</div>
-											</div>
-										</a>
-									</div>
-									<a href="javascript:;">
-										<div class="text-center msg-footer">View All Notifications</div>
-									</a>
-								</div>
-							</li>
-							<li class="nav-item dropdown dropdown-large">
-								<a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
-									{{-- <i class='bx bx-comment'></i> --}}
-								</a>
-								<div class="dropdown-menu dropdown-menu-end">
-									<a href="javascript:;">
-										<div class="msg-header">
-											<p class="msg-header-title">Messages</p>
-											<p class="msg-header-clear ms-auto">Marks all as read</p>
-										</div>
-									</a>
-									<div class="header-message-list">
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-													<img src="{{ asset('admin') }}/assets/images/avatars/avatar-1.png" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Daisy Anderson <span class="msg-time float-end">5 sec
-												ago</span></h6>
-													<p class="msg-info">The standard chunk of lorem</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-													<img src="{{ asset('admin') }}/assets/images/avatars/avatar-2.png" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Althea Cabardo <span class="msg-time float-end">14
-												sec ago</span></h6>
-													<p class="msg-info">Many desktop publishing packages</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-													<img src="{{ asset('admin') }}/assets/images/avatars/avatar-3.png" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Oscar Garner <span class="msg-time float-end">8 min
-												ago</span></h6>
-													<p class="msg-info">Various versions have evolved over</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-													<img src="{{ asset('admin') }}/assets/images/avatars/avatar-4.png" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Katherine Pechon <span class="msg-time float-end">15
-												min ago</span></h6>
-													<p class="msg-info">Making this the first true generator</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-													<img src="{{ asset('admin') }}/assets/images/avatars/avatar-5.png" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Amelia Doe <span class="msg-time float-end">22 min
-												ago</span></h6>
-													<p class="msg-info">Duis aute irure dolor in reprehenderit</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-													<img src="{{ asset('admin') }}/assets/images/avatars/avatar-6.png" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Cristina Jhons <span class="msg-time float-end">2 hrs
-												ago</span></h6>
-													<p class="msg-info">The passage is attributed to an unknown</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-													<img src="{{ asset('admin') }}/assets/images/avatars/avatar-7.png" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">James Caviness <span class="msg-time float-end">4 hrs
-												ago</span></h6>
-													<p class="msg-info">The point of using Lorem</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-													<img src="{{ asset('admin') }}/assets/images/avatars/avatar-8.png" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Peter Costanzo <span class="msg-time float-end">6 hrs
-												ago</span></h6>
-													<p class="msg-info">It was popularised in the 1960s</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-													<img src="{{ asset('admin') }}/assets/images/avatars/avatar-9.png" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">David Buckley <span class="msg-time float-end">2 hrs
-												ago</span></h6>
-													<p class="msg-info">Various versions have evolved over</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-													<img src="{{ asset('admin') }}/assets/images/avatars/avatar-10.png" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Thomas Wheeler <span class="msg-time float-end">2 days
-												ago</span></h6>
-													<p class="msg-info">If you are going to use a passage</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-													<img src="{{ asset('admin') }}/assets/images/avatars/avatar-11.png" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Johnny Seitz <span class="msg-time float-end">5 days
-												ago</span></h6>
-													<p class="msg-info">All the Lorem Ipsum generators</p>
-												</div>
-											</div>
-										</a>
-									</div>
-									<a href="javascript:;">
-										<div class="text-center msg-footer">View All Messages</div>
-									</a>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="user-box dropdown">
-						<a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							<img src="https://cdn-icons-png.flaticon.com/512/9187/9187604.png" class="user-img" alt="user avatar">
-						
-							<div class="user-info ps-3">
-									<p class="user-name mb-0">Guest</p>
-									<p class="designation mb-0">Not Logged In</p>
-							</div>
-						</a>
-						
-						<ul class="dropdown-menu dropdown-menu-end">
-						
-							
-							<li>
-								<div class="dropdown-divider mb-0"></div>
-							</li>
-							<li><a class="dropdown-item" href="/logout"><i class='bx bx-log-out-circle'></i><span>Logout</span></a>
-							</li>
-						</ul>
-					</div>
-				</nav>
-			</div>
-		</header>
-        <!--end header -->
-        <!--start page wrapper -->
-        @yield('content')
-
-        <!--end page wrapper -->
-        <!--start overlay-->
-        <div class="overlay toggle-icon"></div>
-        <!--end overlay-->
-        <!--Start Back To Top Button-->
-        <a class="back-to-top" href="javaScript:;"><i class='bx bxs-up-arrow-alt'></i></a>
-        <!--End Back To Top Button-->
-        <footer class="page-footer">
-            <?php
-            // Dapatkan tahun sekarang menggunakan PHP
-            $year = date('Y');
-            ?>
-
-            <p class="mb-0">Copyright © <?php echo $year; ?>. All right reserved.</p>
-        </footer>
     </div>
-    <!--end wrapper-->
-    <!--start switcher-->
+    <!-- [ Pre-loader ] End -->
+    <!-- [ Sidebar Menu ] start -->
+    @include('template-admin.navbar')
+	
+	
+    <!-- [ Sidebar Menu ] end --> <!-- [ Header Topbar ] start -->
+    @include('template-admin.header')
+   
+    <!-- [ Header ] end -->
 
+
+
+    <!-- [ Main Content ] start -->
+	@yield('content')
+
+    <!-- [ Main Content ] end -->
+    {{-- <footer class="pc-footer">
+        <div class="footer-wrapper container-fluid">
+            <div class="row">
+                <div class="col-sm my-1">
+                    <p class="m-0">Panenpro &#9829;</p>
+                </div>
+                <div class="col-auto my-1">
+                    <ul class="list-inline footer-link mb-0">
+                        <li class="list-inline-item"><a href="/">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer> --}}
     <!--end switcher-->
-    {{-- @include('sweetalert::alert') --}}
+    @include('sweetalert::alert')
 
     @yield('script')
-
-    <!-- Bootstrap JS -->
-    <script src="{{ asset('admin') }}/assets/js/bootstrap.bundle.min.js"></script>
-    <!--plugins-->
-    <script src="{{ asset('admin') }}/assets/js/jquery.min.js"></script>
-    <script src="{{ asset('admin') }}/assets/plugins/simplebar/js/simplebar.min.js"></script>
-    <script src="{{ asset('admin') }}/assets/plugins/metismenu/js/metisMenu.min.js"></script>
-    <script src="{{ asset('admin') }}/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-    <script src="{{ asset('admin') }}/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="{{ asset('admin') }}/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="{{ asset('admin') }}/assets/plugins/chartjs/js/Chart.min.js"></script>
-    <script src="{{ asset('admin') }}/assets/plugins/chartjs/js/Chart.extension.js"></script>
-    <script src="{{ asset('admin') }}/assets/js/index.js"></script>
-    <!--app JS-->
-    <script src="{{ asset('admin') }}/assets/js/app.js"></script>
-
-    {{-- UPLOAD --}}
-    <script src="{{ asset('admin') }}/assets/plugins/Drag-And-Drop/dist/imageuploadify.min.js"></script>
+    <!-- [Page Specific JS] start -->
+    <script src="{{ asset('admin') }}/assets/js/plugins/apexcharts.min.js"></script>
+    <script src="{{ asset('admin') }}/assets/js/pages/dashboard-default.js"></script>
+    <!-- [Page Specific JS] end -->
+    <!-- Required Js -->
+    <script src="{{ asset('admin') }}/assets/js/plugins/popper.min.js"></script>
+    <script src="{{ asset('admin') }}/assets/js/plugins/simplebar.min.js"></script>
+    <script src="{{ asset('admin') }}/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="{{ asset('admin') }}/assets/js/fonts/custom-font.js"></script>
+    <script src="{{ asset('admin') }}/assets/js/pcoded.js"></script>
+    <script src="{{ asset('admin') }}/assets/js/plugins/feather.min.js"></script>
 
 
-    <script src="{{ asset('admin') }}/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-	<script src="{{ asset('admin') }}/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			// Initialize DataTable for the first table without search functionality
-			$('#example').DataTable({
-				searching: false // Disable search
-			});
-		});
-	</script>
-	
-	<script>
-		$(document).ready(function() {
-			// Initialize DataTable for the second table without search functionality
-			var table = $('#example2').DataTable({
-				lengthChange: false,
-				searching: false, // Disable search
-				// buttons: ['copy', 'excel', 'pdf', 'print']
-			});
-	
-			table.buttons().container()
-				.appendTo('#example2_wrapper .col-md-6:eq(0)');
-		});
-	</script>
-	
-	<!--app JS-->
 
 
+
+    <script>
+        layout_change('light');
+    </script>
+
+
+
+
+    <script>
+        change_box_container('false');
+    </script>
+
+
+
+    <script>
+        layout_rtl_change('false');
+    </script>
+
+
+    <script>
+        preset_change("preset-1");
+    </script>
+
+
+    <script>
+        font_change("Public-Sans");
+    </script>
+
+ <!-- [Page Specific JS] start -->
+    <!-- datatable Js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ asset('admin') }}/assets/js/plugins/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('admin') }}/assets/js/plugins/dataTables.bootstrap5.min.js"></script>
+    <script>
+      // [ Zero Configuration ] start
+      $('#simpletable').DataTable();
+
+      // [ Default Ordering ] start
+      $('#order-table').DataTable({
+        order: [[3, 'desc']]
+      });
+
+      // [ Multi-Column Ordering ]
+      $('#multi-colum-dt').DataTable({
+        columnDefs: [
+          {
+            targets: [0],
+            orderData: [0, 1]
+          },
+          {
+            targets: [1],
+            orderData: [1, 0]
+          },
+          {
+            targets: [4],
+            orderData: [4, 0]
+          }
+        ]
+      });
+
+      // [ Complex Headers ]
+      $('#complex-dt').DataTable();
+
+      // [ DOM Positioning ]
+      $('#DOM-dt').DataTable({
+        dom: '<"top"i>rt<"bottom"flp><"clear">'
+      });
+
+      // [ Alternative Pagination ]
+      $('#alt-pg-dt').DataTable({
+        pagingType: 'full_numbers'
+      });
+
+      // [ Scroll - Vertical ]
+      $('#scr-vrt-dt').DataTable({
+        scrollY: '200px',
+        scrollCollapse: true,
+        paging: false
+      });
+
+      // [ Scroll - Vertical, Dynamic Height ]
+      $('#scr-vtr-dynamic').DataTable({
+        scrollY: '50vh',
+        scrollCollapse: true,
+        paging: false
+      });
+
+      // [ Language - Comma Decimal Place ]
+      $('#lang-dt').DataTable({
+        language: {
+          decimal: ',',
+          thousands: '.'
+        }
+      });
+    </script>
+    <!-- [Page Specific JS] end -->
 
 </body>
+<!-- [Body] end -->
 
 </html>
