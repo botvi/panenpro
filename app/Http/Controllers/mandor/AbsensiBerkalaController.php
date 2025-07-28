@@ -40,6 +40,7 @@ class AbsensiBerkalaController extends Controller
       'baris' => $request->baris,
       'arah_masuk' => $request->arah_masuk,
       'jam' => $request->jam,
+      'luasan' => $request->luasan,
     ]);
 
     Alert::success('Berhasil', 'Data Absensi Berkala berhasil ditambahkan');
@@ -74,6 +75,7 @@ class AbsensiBerkalaController extends Controller
       'baris' => $request->baris,
       'arah_masuk' => $request->arah_masuk,
       'jam' => $request->jam,
+      'luasan' => $request->luasan,
     ]);
 
     Alert::success('Berhasil', 'Data Absensi Berkala berhasil diperbarui');

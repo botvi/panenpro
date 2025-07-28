@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('baris');
             $table->enum('arah_masuk', ['Barat', 'Timur']);
             $table->string('jam');
+            $table->string('luasan');
+
             $table->timestamps();
         });
     }

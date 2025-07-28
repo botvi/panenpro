@@ -9,14 +9,14 @@
                     <div class="row align-items-center">
                         <div class="col-md-12">
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/dashboard-mandor">Home</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0)">Absensi Berkala</a></li>
-                                <li class="breadcrumb-item" aria-current="page">Tabel Data Absensi Berkala</li>
+                                <li class="breadcrumb-item"><a href="/dashboard-pemanen">Home</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0)">Data Panen</a></li>
+                                <li class="breadcrumb-item" aria-current="page">Tabel Data Panen</li>
                             </ul>
                         </div>
                         <div class="col-md-12">
                             <div class="page-header-title">
-                                <h2 class="mb-0">Tabel Data Absensi Berkala</h2>
+                                <h2 class="mb-0">Tabel Data Panen</h2>
                             </div>
                         </div>
                     </div>
@@ -30,9 +30,8 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Tabel Data Absensi Berkala</h5>
-                            <a href="{{ route('absensiberkala.create') }}" class="btn btn-sm btn-primary">Tambah Data
-                                Absensi Berkala</a>
+                            <h5 class="mb-0">Tabel Data Panen</h5>
+                            <span class="badge bg-info">Read Only Access</span>
                         </div>
                         <div class="card-body">
                             <div class="dt-responsive table-responsive">
@@ -40,39 +39,53 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Pemanen</th>
-                                            <th>Blok</th>
-                                            <th>Baris</th>
-                                            <th>Arah Masuk</th>
-                                            <th>Jam</th>
                                             <th>Luasan</th>
+                                            <th>Nama Blok</th>
+                                            <th>No TPH</th>
+                                            <th>Ripe</th>
+                                            <th>Over Ripe</th>
+                                            <th>Under Ripe</th>
+                                            <th>EB</th>
+                                            <th>Brondolan</th>
+                                            <th>Total</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($absensiberkala as $m => $item)
+                                        @foreach ($datapanen as $m => $item)
                                             <tr>
                                                 <td>{{ $m + 1 }}</td>
-                                                <td>{{ $item->pemanen->nama }}</td>
-                                                <td>
-                                                    {{ $item->blok }}
-                                                </td>
-                                                <td>
-                                                    {{ $item->baris }}
-                                                </td>
-                                                <td>
-                                                    {{ $item->arah_masuk }}
-                                                </td>
-                                                <td>
-                                                    {{ $item->jam }}
-                                                </td>
                                                 <td>
                                                     {{ $item->luasan }}
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('absensiberkala.edit', $item->id) }}"
+                                                    {{ $item->nama_blok }}
+                                                </td>
+                                                <td>
+                                                    {{ $item->no_tph }}
+                                                </td>
+                                                <td>
+                                                    {{ $item->ripe }}
+                                                </td>
+                                                <td>
+                                                    {{ $item->over_ripe }}
+                                                </td>
+                                                <td>
+                                                    {{ $item->under_ripe }}
+                                                </td>
+                                                <td>
+                                                    {{ $item->eb }}
+                                                </td>
+                                                <td>
+                                                    {{ $item->brondolan }}
+                                                </td>
+                                                <td>
+                                                    {{ $item->jumlah_buah_per_blok }}
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('datapanen.edit', $item->id) }}"
                                                         class="btn btn-sm btn-warning">Edit</a>
-                                                    <form action="{{ route('absensiberkala.destroy', $item->id) }}"
+                                                    <form action="{{ route('datapanen.destroy', $item->id) }}"
                                                         method="POST" style="display:inline;" class="delete-form">
                                                         @csrf
                                                         @method('DELETE')
@@ -85,12 +98,15 @@
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Pemanen</th>
-                                            <th>Blok</th>
-                                            <th>Baris</th>
-                                            <th>Arah Masuk</th>
-                                            <th>Jam</th>
                                             <th>Luasan</th>
+                                            <th>Nama Blok</th>
+                                            <th>No TPH</th>
+                                            <th>Ripe</th>
+                                            <th>Over Ripe</th>
+                                            <th>Under Ripe</th>
+                                            <th>EB</th>
+                                            <th>Brondolan</th>
+                                            <th>Total</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot>

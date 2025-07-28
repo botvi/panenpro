@@ -24,7 +24,6 @@ class DataPanenController extends Controller
   public function store(Request $request)
   {
     $request->validate([
-      'luasan' => 'required',
       'nama_blok' => 'required',
       'no_tph' => 'required',
       'ripe' => 'required',
@@ -38,7 +37,6 @@ class DataPanenController extends Controller
     // Buat data panen baru
     DataPanen::create([
       'pemanen_id' => auth()->user()->id,
-      'luasan' => $request->luasan,
       'nama_blok' => $request->nama_blok,
       'no_tph' => $request->no_tph,
       'ripe' => $request->ripe,
@@ -63,7 +61,6 @@ class DataPanenController extends Controller
   public function update(Request $request, $id)
   {
     $request->validate([
-      'luasan' => 'required',
       'nama_blok' => 'required',
       'no_tph' => 'required',
       'ripe' => 'required',
@@ -78,7 +75,6 @@ class DataPanenController extends Controller
     $datapanen = DataPanen::findOrFail($id);
     $datapanen->update([
       'pemanen_id' => auth()->user()->id,
-      'luasan' => $request->luasan,
       'nama_blok' => $request->nama_blok,
       'no_tph' => $request->no_tph,
       'ripe' => $request->ripe,

@@ -18,6 +18,11 @@ use App\Http\Controllers\mandor\{
 use App\Http\Controllers\asisten\{
     DashboardAsistenController,
     MandorController,
+    AKPController as AsistenAKPController,
+    GrafikKepatuhanController as AsistenGrafikKepatuhanController,
+    AbsensiPemanenController as AsistenAbsensiPemanenController,
+    AbsensiBerkalaController as AsistenAbsensiBerkalaController,
+    DataPanenController as AsistenDataPanenController,
 };
 use App\Http\Controllers\pemanen\{
     DashboardPemanenController,
@@ -51,6 +56,11 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['middleware' => ['role:asisten']], function () {
     Route::get('/dashboard-asisten', [DashboardAsistenController::class, 'index'])->name('dashboard-asisten');
     Route::resource('datamandor', MandorController::class);
+    Route::get('/asisten/akp', [AsistenAKPController::class, 'indexAKP'])->name('asisten.akp.index');
+    Route::get('/asisten/grafikkepatuhan', [AsistenGrafikKepatuhanController::class, 'index'])->name('asisten.grafikkepatuhan.index');
+    Route::get('/asisten/absensipemanen', [AsistenAbsensiPemanenController::class, 'index'])->name('asisten.absensipemanen.index');
+    Route::get('/asisten/absensiberkala', [AsistenAbsensiBerkalaController::class, 'index'])->name('asisten.absensiberkala.index');
+    Route::get('/asisten/datapanen', [AsistenDataPanenController::class, 'index'])->name('asisten.datapanen.index');
 });
 
 Route::group(['middleware' => ['role:mandor']], function () {
@@ -60,13 +70,13 @@ Route::group(['middleware' => ['role:mandor']], function () {
 
     // AKP
     Route::get('/akp', [AKPController::class, 'indexAKP'])->name('akp.index');
-    
+
     Route::get('/planakp/create', [AKPController::class, 'createPlanAKP'])->name('planakp.create');
     Route::post('/planakp/store', [AKPController::class, 'storePlanAKP'])->name('planakp.store');
     Route::get('/planakp/edit/{id}', [AKPController::class, 'editPlanAKP'])->name('planakp.edit');
     Route::put('/planakp/update/{id}', [AKPController::class, 'updatePlanAKP'])->name('planakp.update');
     Route::delete('/planakp/destroy/{id}', [AKPController::class, 'destroyPlanAKP'])->name('planakp.destroy');
-    
+
     Route::get('/aktualakp/create', [AKPController::class, 'createAktualAKP'])->name('aktualakp.create');
     Route::post('/aktualakp/store', [AKPController::class, 'storeAktualAKP'])->name('aktualakp.store');
     Route::get('/aktualakp/edit/{id}', [AKPController::class, 'editAktualAKP'])->name('aktualakp.edit');

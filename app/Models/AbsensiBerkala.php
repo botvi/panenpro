@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AbsensiBerkala extends Model
 {
     use HasFactory;
-    protected $fillable = ['pemanen_id', 'mandor_id', 'blok', 'baris', 'arah_masuk', 'jam'];
+    protected $fillable = ['pemanen_id', 'mandor_id', 'blok', 'baris', 'arah_masuk', 'jam', 'luasan'];
 
     public function pemanen()
     {

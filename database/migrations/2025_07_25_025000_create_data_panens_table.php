@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('data_panens', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pemanen_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('luasan');
             $table->string('nama_blok');
             $table->string('no_tph');
             $table->integer('ripe');

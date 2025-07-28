@@ -39,11 +39,6 @@
                                 @method('PUT')
                                 
                                 <div class="form-group">
-                                    <label class="form-label">Luasan</label>
-                                    <input type="text" name="luasan" id="luasan" class="form-control" required value="{{ old('luasan', $datapanen->luasan) }}">
-                                </div>
-                                
-                                <div class="form-group">
                                     <label class="form-label">Nama Blok</label>
                                     <input type="text" name="nama_blok" id="nama_blok" class="form-control" required value="{{ old('nama_blok', $datapanen->nama_blok) }}">
                                 </div>

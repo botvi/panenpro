@@ -37,10 +37,7 @@
                             <form action="{{ route('datapanen.store') }}" method="POST">
                                 @csrf
                                 
-                                <div class="form-group">
-                                    <label class="form-label">Luasan</label>
-                                    <input type="text" name="luasan" id="luasan" class="form-control" required>
-                                </div>
+                               
                                 
                                 <div class="form-group">
                                     <label class="form-label">Nama Blok</label>

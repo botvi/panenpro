@@ -9,14 +9,14 @@
                     <div class="row align-items-center">
                         <div class="col-md-12">
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/dashboard-mandor">Home</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0)">Absensi Berkala</a></li>
-                                <li class="breadcrumb-item" aria-current="page">Tabel Data Absensi Berkala</li>
+                                <li class="breadcrumb-item"><a href="/dashboard-asisten">Home</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0)">Absensi Pemanen</a></li>
+                                <li class="breadcrumb-item" aria-current="page">Tabel Data Absensi Pemanen</li>
                             </ul>
                         </div>
                         <div class="col-md-12">
                             <div class="page-header-title">
-                                <h2 class="mb-0">Tabel Data Absensi Berkala</h2>
+                                <h2 class="mb-0">Tabel Data Absensi Pemanen</h2>
                             </div>
                         </div>
                     </div>
@@ -30,9 +30,8 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Tabel Data Absensi Berkala</h5>
-                            <a href="{{ route('absensiberkala.create') }}" class="btn btn-sm btn-primary">Tambah Data
-                                Absensi Berkala</a>
+                            <h5 class="mb-0">Tabel Data Absensi Pemanen</h5>
+                            <span class="badge bg-info">Read Only Access</span>
                         </div>
                         <div class="card-body">
                             <div class="dt-responsive table-responsive">
@@ -41,44 +40,29 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Pemanen</th>
-                                            <th>Blok</th>
-                                            <th>Baris</th>
-                                            <th>Arah Masuk</th>
-                                            <th>Jam</th>
-                                            <th>Luasan</th>
-                                            <th>Aksi</th>
+                                            <th>Mandor</th>
+                                            <th>Keterangan</th>
+                                            <th>Tanggal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($absensiberkala as $m => $item)
+                                        @foreach ($absensipemanen as $m => $item)
                                             <tr>
                                                 <td>{{ $m + 1 }}</td>
                                                 <td>{{ $item->pemanen->nama }}</td>
+                                                <td>{{ $item->mandor->nama ?? 'N/A' }}</td>
                                                 <td>
-                                                    {{ $item->blok }}
+                                                    <span class="badge 
+                                                        @if($item->keterangan == 'P(Panen)') bg-success 
+                                                        @elseif($item->keterangan == 'M(Mangkir)') bg-danger
+                                                        @elseif($item->keterangan == 'S(Sakit)') bg-warning
+                                                        @elseif($item->keterangan == 'C(Cuti)') bg-info
+                                                        @elseif($item->keterangan == 'R(Rawat)') bg-secondary
+                                                        @else bg-light @endif">
+                                                        {{ $item->keterangan }}
+                                                    </span>
                                                 </td>
-                                                <td>
-                                                    {{ $item->baris }}
-                                                </td>
-                                                <td>
-                                                    {{ $item->arah_masuk }}
-                                                </td>
-                                                <td>
-                                                    {{ $item->jam }}
-                                                </td>
-                                                <td>
-                                                    {{ $item->luasan }}
-                                                </td>
-                                                <td>
-                                                    <a href="{{ route('absensiberkala.edit', $item->id) }}"
-                                                        class="btn btn-sm btn-warning">Edit</a>
-                                                    <form action="{{ route('absensiberkala.destroy', $item->id) }}"
-                                                        method="POST" style="display:inline;" class="delete-form">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-                                                    </form>
-                                                </td>
+                                                <td>{{ $item->created_at->format('d/m/Y H:i') }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -86,12 +70,9 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Pemanen</th>
-                                            <th>Blok</th>
-                                            <th>Baris</th>
-                                            <th>Arah Masuk</th>
-                                            <th>Jam</th>
-                                            <th>Luasan</th>
-                                            <th>Aksi</th>
+                                            <th>Mandor</th>
+                                            <th>Keterangan</th>
+                                            <th>Tanggal</th>
                                         </tr>
                                     </tfoot>
                                 </table>

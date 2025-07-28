@@ -67,6 +67,10 @@
                                     <label class="form-label">Jam</label>
                                     <input type="time" name="jam" id="jam" class="form-control" required>
                                 </div>
+                                <div class="form-group">
+                                    <label class="form-label">Luasan</label>
+                                    <input type="text" name="luasan" id="luasan" class="form-control" required>
+                                </div>
                                
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary me-2">Submit</button>

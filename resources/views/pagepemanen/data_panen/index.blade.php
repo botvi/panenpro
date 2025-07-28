@@ -40,7 +40,6 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Luasan</th>
                                             <th>Nama Blok</th>
                                             <th>No TPH</th>
                                             <th>Ripe</th>
@@ -56,9 +55,6 @@
                                         @foreach ($datapanen as $m => $item)
                                             <tr>
                                                 <td>{{ $m + 1 }}</td>
-                                                <td>
-                                                    {{ $item->luasan }}
-                                                </td>
                                                 <td>
                                                     {{ $item->nama_blok }}
                                                 </td>
@@ -99,7 +95,6 @@
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
-                                            <th>Luasan</th>
                                             <th>Nama Blok</th>
                                             <th>No TPH</th>
                                             <th>Ripe</th>

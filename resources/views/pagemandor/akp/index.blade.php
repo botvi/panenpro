@@ -47,13 +47,17 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @php
+                        $totalSum = 0;
+                        $totalCount = 0;
+                    @endphp
                     @foreach($planakp as $m => $item)
                     <tr>
                       <td>{{ $m+1 }}</td>
                       <td>{{ $item->nama_blok }}</td>
                       <td>{{ $item->satuan_per_hektar }}</td>
                       <td>{{ $item->jumlah_janjang }}</td>
-                      <td>{{ $item->total }}</td>
+                      <td>{{ $item->total }}%</td>
                       <td>
                         <a href="{{ route('planakp.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
                         <form action="{{ route('planakp.destroy', $item->id) }}" method="POST" style="display:inline;" class="delete-form">
@@ -61,8 +65,12 @@
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                         </form>
-                    </td>
+                      </td>
                     </tr>
+                    @php
+                        $totalSum += $item->total;
+                        $totalCount++;
+                    @endphp
                     @endforeach
                   </tbody>
                   <tfoot>
@@ -73,6 +81,16 @@
                       <th>Jumlah Janjang</th>
                       <th>Total</th>
                       <th>Aksi</th>
+                    </tr>
+                    <tr>
+                      <th colspan="4" style="text-align:right">Rata-rata Total</th>
+                      <th colspan="2">
+                        @if($totalCount > 0)
+                          {{ number_format($totalSum / $totalCount, 2) }}%
+                        @else
+                          0%
+                        @endif
+                      </th>
                     </tr>
                   </tfoot>
                 </table>
@@ -101,6 +119,10 @@
                       <th>Aksi</th>
                     </tr>
                   </thead>
+                  @php
+                    $totalSum2 = 0;
+                    $totalCount2 = 0;
+                  @endphp
                   <tbody>
                     @foreach($aktualakp as $n => $item)
                     <tr>
@@ -108,7 +130,7 @@
                       <td>{{ $item->nama_blok }}</td>
                       <td>{{ $item->satuan_per_hektar }}</td>
                       <td>{{ $item->jumlah_janjang }}</td>
-                      <td>{{ $item->total }}</td>
+                      <td>{{ $item->total }}%</td>
                       <td>
                         <a href="{{ route('aktualakp.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
                         <form action="{{ route('aktualakp.destroy', $item->id) }}" method="POST" style="display:inline;" class="delete-form">
@@ -118,6 +140,10 @@
                         </form>
                     </td>
                     </tr>
+                    @php
+                        $totalSum2 += $item->total;
+                        $totalCount2++;
+                    @endphp
                     @endforeach
                   </tbody>
                   <tfoot>
@@ -128,6 +154,16 @@
                       <th>Jumlah Janjang</th>
                       <th>Total</th>
                       <th>Aksi</th>
+                    </tr>
+                    <tr>
+                      <th colspan="4" style="text-align:right">Rata-rata Total</th>
+                      <th colspan="2">
+                        @if($totalCount2 > 0)
+                          {{ number_format($totalSum2 / $totalCount2, 2) }}%
+                        @else
+                          0%
+                        @endif
+                      </th>
                     </tr>
                   </tfoot>
                 </table>

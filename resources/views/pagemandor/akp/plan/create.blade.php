@@ -55,8 +55,8 @@
                                     <small>Jumlah Janjang harus berupa angka.</small>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Total</label>
-                                    <input type="number" name="total" id="total" class="form-control" placeholder="Total" required readonly>
+                                    <label class="form-label">Total (Persentase)</label>
+                                    <input type="text" name="total" id="total" class="form-control" placeholder="Total" required readonly>
                                     <small>Total harus berupa angka.</small>
                                 </div>
                                 <div class="card-footer">
@@ -74,7 +74,7 @@
                                     const janjang = parseFloat(janjangInput.value) || 0;
                                     let total = 0;
                                     if (sph > 0) {
-                                        total = (janjang / sph) * 100;
+                                        total = ((janjang / sph) * 100/100).toFixed(2);
                                     }
                                     totalInput.value = total ? total : '';
                                 }

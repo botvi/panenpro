@@ -9,7 +9,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-12">
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/dashboard-mandor">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/dashboard-asisten">Home</a></li>
                                 <li class="breadcrumb-item"><a href="javascript: void(0)">Absensi Berkala</a></li>
                                 <li class="breadcrumb-item" aria-current="page">Tabel Data Absensi Berkala</li>
                             </ul>
@@ -31,8 +31,7 @@
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h5 class="mb-0">Tabel Data Absensi Berkala</h5>
-                            <a href="{{ route('absensiberkala.create') }}" class="btn btn-sm btn-primary">Tambah Data
-                                Absensi Berkala</a>
+                            <span class="badge bg-info">Read Only Access</span>
                         </div>
                         <div class="card-body">
                             <div class="dt-responsive table-responsive">
@@ -41,44 +40,33 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Pemanen</th>
+                                            <th>Mandor</th>
                                             <th>Blok</th>
                                             <th>Baris</th>
                                             <th>Arah Masuk</th>
                                             <th>Jam</th>
-                                            <th>Luasan</th>
-                                            <th>Aksi</th>
+                                            <th>Tanggal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($absensiberkala as $m => $item)
-                                            <tr>
+                                                                                        <tr>
                                                 <td>{{ $m + 1 }}</td>
                                                 <td>{{ $item->pemanen->nama }}</td>
+                                                <td>{{ $item->mandor->nama ?? 'N/A' }}</td>
                                                 <td>
-                                                    {{ $item->blok }}
+                                                    <span class="badge bg-primary">{{ $item->blok }}</span>
                                                 </td>
                                                 <td>
-                                                    {{ $item->baris }}
+                                                    <span class="badge bg-success">{{ $item->baris }}</span>
                                                 </td>
                                                 <td>
-                                                    {{ $item->arah_masuk }}
+                                                    <span class="badge bg-warning">{{ $item->arah_masuk }}</span>
                                                 </td>
                                                 <td>
-                                                    {{ $item->jam }}
+                                                    <span class="badge bg-info">{{ $item->jam }}</span>
                                                 </td>
-                                                <td>
-                                                    {{ $item->luasan }}
-                                                </td>
-                                                <td>
-                                                    <a href="{{ route('absensiberkala.edit', $item->id) }}"
-                                                        class="btn btn-sm btn-warning">Edit</a>
-                                                    <form action="{{ route('absensiberkala.destroy', $item->id) }}"
-                                                        method="POST" style="display:inline;" class="delete-form">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-                                                    </form>
-                                                </td>
+                                                <td>{{ $item->created_at->format('d/m/Y') }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -86,12 +74,12 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Pemanen</th>
+                                            <th>Mandor</th>
                                             <th>Blok</th>
                                             <th>Baris</th>
                                             <th>Arah Masuk</th>
                                             <th>Jam</th>
-                                            <th>Luasan</th>
-                                            <th>Aksi</th>
+                                            <th>Tanggal</th>
                                         </tr>
                                     </tfoot>
                                 </table>

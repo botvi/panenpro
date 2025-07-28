@@ -56,7 +56,7 @@
                                     <small>Jumlah Janjang harus berupa angka.</small>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Total</label>
+                                    <label class="form-label">Total (Persentase)</label>
                                     <input type="number" name="total" id="total" class="form-control" placeholder="Total" value="{{ old('total', $planakp->total) }}" required readonly>
                                     <small>Total harus berupa angka.</small>
                                 </div>
@@ -75,7 +75,7 @@
                                     const janjang = parseFloat(janjangInput.value) || 0;
                                     let total = 0;
                                     if (sph > 0) {
-                                        total = (janjang / sph) * 100;
+                                        total = ((janjang / sph) * 100/100).toFixed(2);
                                     }
                                     totalInput.value = total ? total : '';
                                 }
