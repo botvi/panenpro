@@ -136,9 +136,9 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between px-3 py-2">
-                            <a href="/" class="btn btn-outline-primary w-100 me-2">
+                            {{-- <a href="/" class="btn btn-outline-primary w-100 me-2">
                                 <i class="ti ti-user"></i> Profil
-                            </a>
+                            </a> --}}
                             <a href="/logout" class="btn btn-outline-danger w-100 ms-2">
                                 <i class="ti ti-power"></i> Logout
                             </a>

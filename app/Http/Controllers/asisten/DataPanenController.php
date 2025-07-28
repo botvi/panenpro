@@ -10,7 +10,7 @@ class DataPanenController extends Controller
 {
     public function index()
     {
-        $datapanen = DataPanen::with(['pemanen', 'mandor'])->get();
+        $datapanen = DataPanen::with(['pemanen'])->get();
 
         return view('pageasisten.data_panen.index', compact('datapanen'));
     }

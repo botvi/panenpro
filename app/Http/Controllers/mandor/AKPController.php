@@ -15,8 +15,8 @@ class AKPController extends Controller
 
   public function indexAKP()
   {
-    $planakp = PlanAKP::with('mandor')->get();
-    $aktualakp = AktualAKP::with('mandor')->get();
+    $planakp = PlanAKP::with('mandor')->where('mandor_id', auth()->user()->id)->get();
+    $aktualakp = AktualAKP::with('mandor')->where('mandor_id', auth()->user()->id)->get();
     return view('pagemandor.akp.index', compact('planakp', 'aktualakp'));
   }
 
