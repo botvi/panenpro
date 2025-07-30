@@ -31,7 +31,7 @@
                     <!-- Basic Inputs -->
                     <div class="card">
                         <div class="card-header">
-                            <h5>Form Tambah Data Panen</h5>
+                            <h5>Form Edit Data Panen</h5>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('datapanen.update', $datapanen->id) }}" method="POST">
@@ -103,8 +103,7 @@
             const overRipe = parseInt(document.getElementById('over_ripe').value) || 0;
             const underRipe = parseInt(document.getElementById('under_ripe').value) || 0;
             const eb = parseInt(document.getElementById('eb').value) || 0;
-            const brondolan = parseInt(document.getElementById('brondolan').value) || 0;
-            const total = ripe + overRipe + underRipe + eb + brondolan;
+            const total = ripe + overRipe + underRipe + eb;
             document.getElementById('jumlah_buah_per_blok').value = total;
         }
 
@@ -112,6 +111,5 @@
         document.getElementById('over_ripe').addEventListener('input', hitungJumlahBuah);
         document.getElementById('under_ripe').addEventListener('input', hitungJumlahBuah);
         document.getElementById('eb').addEventListener('input', hitungJumlahBuah);
-        document.getElementById('brondolan').addEventListener('input', hitungJumlahBuah);
     </script>
 @endsection
