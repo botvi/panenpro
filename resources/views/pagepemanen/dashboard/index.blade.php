@@ -43,41 +43,25 @@
                     </div>
                 @endif
 
-
-
                 <!-- Quick Actions -->
                 <div class="col-md-12">
                     <h5 class="mb-3">Aksi Cepat</h5>
                     <div class="card">
                         <div class="card-body">
                             <div class="row g-3">
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <a href="{{ route('datapanen.create') }}" class="btn btn-primary w-100 py-3">
                                         <i class="ti ti-plus f-20 mb-2"></i>
                                         <div>Tambah Data Panen</div>
                                         <small class="text-white-50">Input data panen baru</small>
                                     </a>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <a href="{{ route('datapanen.index') }}" class="btn btn-outline-primary w-100 py-3">
                                         <i class="ti ti-list f-20 mb-2"></i>
                                         <div>Lihat Semua Data</div>
                                         <small class="text-muted">Riwayat panen lengkap</small>
                                     </a>
-                                </div>
-                                <div class="col-md-3">
-                                    <button class="btn btn-outline-success w-100 py-3" onclick="window.print()">
-                                        <i class="ti ti-printer f-20 mb-2"></i>
-                                        <div>Cetak Laporan</div>
-                                        <small class="text-muted">Print dashboard ini</small>
-                                    </button>
-                                </div>
-                                <div class="col-md-3">
-                                    <button class="btn btn-outline-info w-100 py-3" onclick="refreshDashboard()">
-                                        <i class="ti ti-refresh f-20 mb-2"></i>
-                                        <div>Refresh Data</div>
-                                        <small class="text-muted">Perbarui dashboard</small>
-                                    </button>
                                 </div>
                             </div>
                         </div>

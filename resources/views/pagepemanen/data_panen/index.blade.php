@@ -42,16 +42,19 @@
                                             <th>No</th>
                                             <th>Nama Blok</th>
                                             <th>No TPH</th>
+                                            <th>Brondolan</th>
                                             <th>Ripe</th>
                                             <th>Over Ripe</th>
                                             <th>Under Ripe</th>
                                             <th>EB</th>
-                                            <th>Brondolan</th>
                                             <th>Total</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php
+                                            $totalBrondolan = $datapanen->sum('brondolan');
+                                        @endphp
                                         @foreach ($datapanen as $m => $item)
                                             <tr>
                                                 <td>{{ $m + 1 }}</td>
@@ -60,6 +63,9 @@
                                                 </td>
                                                 <td>
                                                     {{ $item->no_tph }}
+                                                </td>
+                                                <td>
+                                                    {{ $item->brondolan }}
                                                 </td>
                                                 <td>
                                                     {{ $item->ripe }}
@@ -72,9 +78,6 @@
                                                 </td>
                                                 <td>
                                                     {{ $item->eb }}
-                                                </td>
-                                                <td>
-                                                    {{ $item->brondolan }}
                                                 </td>
                                                 <td>
                                                     {{ $item->jumlah_buah_per_blok }}
@@ -97,13 +100,23 @@
                                             <th>No</th>
                                             <th>Nama Blok</th>
                                             <th>No TPH</th>
+                                            <th>Brondolan</th>
                                             <th>Ripe</th>
                                             <th>Over Ripe</th>
                                             <th>Under Ripe</th>
                                             <th>EB</th>
-                                            <th>Brondolan</th>
                                             <th>Total</th>
                                             <th>Aksi</th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="3" style="text-align: right; font-weight: bold;">Total Brondolan:</th>
+                                            <th style="font-weight: bold;">{{ $totalBrondolan }}</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
                                         </tr>
                                     </tfoot>
                                 </table>

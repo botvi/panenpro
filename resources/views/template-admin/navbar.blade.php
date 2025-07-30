@@ -56,6 +56,20 @@
                             <span class="pc-mtext">Data Panen</span>
                         </a>
                     </li>
+
+                    <li class="pc-item">
+                        <a href="#" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
+                            <span class="pc-mtext">Rekap AKP Aktual</span>
+                        </a>
+                    </li>
+
+                    <li class="pc-item">
+                        <a href="#" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
+                            <span class="pc-mtext">Data Blok</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         @endif

@@ -347,29 +347,20 @@
                             </div>
                             <div class="row g-3 mt-2">
                                 @if(Route::has('asisten.absensiberkala.index'))
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <a href="{{ route('asisten.absensiberkala.index') }}" class="btn btn-secondary w-100 hover-effect">
-                                            <i class="ti ti-calendar-check me-2"></i>Absensi Berkala
+                                            <i class="ti ti-calendar-event me-2"></i>Absensi Berkala
                                         </a>
                                     </div>
                                 @endif
                                 @if(Route::has('datamandor.index'))
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <a href="{{ route('datamandor.index') }}" class="btn btn-outline-primary w-100 hover-effect">
                                             <i class="ti ti-list me-2"></i>Data Mandor
                                         </a>
                                     </div>
                                 @endif
-                                <div class="col-md-3">
-                                    <button class="btn btn-outline-success w-100 hover-effect" onclick="window.print()">
-                                        <i class="ti ti-printer me-2"></i>Cetak Laporan
-                                    </button>
-                                </div>
-                                <div class="col-md-3">
-                                    <button class="btn btn-outline-info w-100 hover-effect" onclick="exportData()">
-                                        <i class="ti ti-download me-2"></i>Export Data
-                                    </button>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>

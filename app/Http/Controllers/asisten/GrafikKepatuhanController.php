@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\asisten;
 
 use App\Models\GrafikKepatuhan;
+use App\Models\Mandor;
+use App\Models\Pemanen;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +15,34 @@ class GrafikKepatuhanController extends Controller
      */
     public function index()
     {
+        // Load grafik kepatuhan with relationships
         $grafikkepatuhan = GrafikKepatuhan::with(['pemanen', 'mandor'])->get();
+        
+        // Get all mandors and pemanens for filter dropdown
+        $mandors = Mandor::all();
+        $pemanens = Pemanen::all();
+
+        // Map the data to include proper relationships for JavaScript
+        $grafikkepatuhan = $grafikkepatuhan->map(function ($item) {
+            return [
+                'id' => $item->id,
+                'pemanen_id' => $item->pemanen_id,
+                'mandor_id' => $item->mandor_id,
+                'keluar_buah' => $item->keluar_buah,
+                'alas_karung_brondol' => $item->alas_karung_brondol,
+                'panen_blok_17' => $item->panen_blok_17,
+                'tanggal' => $item->tanggal,
+                'created_at' => $item->created_at,
+                'pemanen' => $item->pemanen ? [
+                    'id' => $item->pemanen->id,
+                    'nama' => $item->pemanen->nama ?? 'N/A'
+                ] : null,
+                'mandor' => $item->mandor ? [
+                    'id' => $item->mandor->id,
+                    'nama' => $item->mandor->nama ?? 'N/A'
+                ] : null
+            ];
+        });
 
 
         // GRAFIIK DISRIBUSI BUAH KELUAR 
@@ -146,9 +175,11 @@ class GrafikKepatuhanController extends Controller
                     ];
                 }
         
-        // DISTRIBUSI PANEN POKOK 17
+                // DISTRIBUSI PANEN POKOK 17
         return view('pageasisten.grafik_kepatuhan.index', compact(
             'grafikkepatuhan',
+            'mandors',
+            'pemanens',
             'distribusibuahkeluar',
             'persentasePerTanggalDistribusibuahkeluar',
             'distribusialaskarungbrondol',

@@ -50,6 +50,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php
+                                            $totalLuasan = $absensiberkala->sum('luasan');
+                                        @endphp
                                         @foreach ($absensiberkala as $m => $item)
                                             <tr>
                                                 <td>{{ $m + 1 }}</td>
@@ -92,6 +95,11 @@
                                             <th>Jam</th>
                                             <th>Luasan</th>
                                             <th>Aksi</th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="6" style="text-align: right; font-weight: bold;">Total:</th>
+                                            <th style="font-weight: bold;">{{ $totalLuasan }}</th>
+                                            <th></th>
                                         </tr>
                                     </tfoot>
                                 </table>

@@ -45,10 +45,14 @@
                                             <th>Baris</th>
                                             <th>Arah Masuk</th>
                                             <th>Jam</th>
+                                            <th>Luasan</th>
                                             <th>Tanggal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php
+                                            $totalLuasan = $absensiberkala->sum('luasan');
+                                        @endphp
                                         @foreach ($absensiberkala as $m => $item)
                                                                                         <tr>
                                                 <td>{{ $m + 1 }}</td>
@@ -66,6 +70,9 @@
                                                 <td>
                                                     <span class="badge bg-info">{{ $item->jam }}</span>
                                                 </td>
+                                                <td>
+                                                    {{ $item->luasan }}
+                                                </td>
                                                 <td>{{ $item->created_at->format('d/m/Y') }}</td>
                                             </tr>
                                         @endforeach
@@ -79,7 +86,13 @@
                                             <th>Baris</th>
                                             <th>Arah Masuk</th>
                                             <th>Jam</th>
+                                            <th>Luasan</th>
                                             <th>Tanggal</th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="7" style="text-align: right; font-weight: bold;">Total:</th>
+                                            <th style="font-weight: bold;">{{ $totalLuasan }}</th>
+                                            <th></th>
                                         </tr>
                                     </tfoot>
                                 </table>
