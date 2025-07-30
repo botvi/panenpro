@@ -65,7 +65,7 @@
                     </li>
 
                     <li class="pc-item">
-                        <a href="#" class="pc-link">
+                        <a href="{{ route('datablok.index') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
                             <span class="pc-mtext">Data Blok</span>
                         </a>

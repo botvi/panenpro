@@ -1,65 +1,102 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\asisten;
 
 use App\Models\DataBlok;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Controllers\Controller;
 
 class DataBlokController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $dataBlok = DataBlok::all();
+        return view('pageasisten.data_blok.index', compact('dataBlok'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('pageasisten.data_blok.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'blok' => 'required',
+            'estate' => 'required',
+            'adfeling' => 'required',
+            'tt' => 'required|integer',
+            'luas' => 'required|integer',
+            'bjr' => 'required|integer',
+            'sph' => 'required|integer',
+            'jumlah_pokok' => 'required|integer',
+        ]);
+
+        DataBlok::create([
+            'blok' => $request->blok,
+            'estate' => $request->estate,
+            'adfeling' => $request->adfeling,
+            'tt' => $request->tt,
+            'luas' => $request->luas,
+            'bjr' => $request->bjr,
+            'sph' => $request->sph,
+            'jumlah_pokok' => $request->jumlah_pokok,
+        ]);
+
+        Alert::success('Berhasil', 'Data Blok berhasil ditambahkan');
+        return redirect()->route('datablok.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(DataBlok $dataBlok)
+    public function show($id)
     {
-        //
+        $blok = DataBlok::findOrFail($id);
+        return view('pageasisten.data_blok.show', compact('blok'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(DataBlok $dataBlok)
+    public function edit($id)
     {
-        //
+        $blok = DataBlok::findOrFail($id);
+        return view('pageasisten.data_blok.edit', compact('blok'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, DataBlok $dataBlok)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'blok' => 'required',
+            'estate' => 'required',
+            'adfeling' => 'required',
+            'tt' => 'required|integer',
+            'luas' => 'required|integer',
+            'bjr' => 'required|integer',
+            'sph' => 'required|integer',
+            'jumlah_pokok' => 'required|integer',
+        ]);
+
+        $blok = DataBlok::findOrFail($id);
+
+        $blok->update([
+            'blok' => $request->blok,
+            'estate' => $request->estate,
+            'adfeling' => $request->adfeling,
+            'tt' => $request->tt,
+            'luas' => $request->luas,
+            'bjr' => $request->bjr,
+            'sph' => $request->sph,
+            'jumlah_pokok' => $request->jumlah_pokok,
+        ]);
+
+        Alert::success('Berhasil', 'Data Blok berhasil diperbarui');
+        return redirect()->route('datablok.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(DataBlok $dataBlok)
+    public function destroy($id)
     {
-        //
+        $blok = DataBlok::findOrFail($id);
+
+        $blok->delete();
+
+        Alert::success('Berhasil', 'Data Blok berhasil dihapus');
+        return redirect()->route('datablok.index');
     }
 }

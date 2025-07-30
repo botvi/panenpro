@@ -22,6 +22,7 @@ use App\Http\Controllers\asisten\{
     GrafikKepatuhanController as AsistenGrafikKepatuhanController,
     AbsensiPemanenController as AsistenAbsensiPemanenController,
     AbsensiBerkalaController as AsistenAbsensiBerkalaController,
+    DataBlokController,
     DataPanenController as AsistenDataPanenController,
 };
 use App\Http\Controllers\pemanen\{
@@ -61,6 +62,7 @@ Route::group(['middleware' => ['role:asisten']], function () {
     Route::get('/asisten/absensipemanen', [AsistenAbsensiPemanenController::class, 'index'])->name('asisten.absensipemanen.index');
     Route::get('/asisten/absensiberkala', [AsistenAbsensiBerkalaController::class, 'index'])->name('asisten.absensiberkala.index');
     Route::get('/asisten/datapanen', [AsistenDataPanenController::class, 'index'])->name('asisten.datapanen.index');
+    Route::resource('datablok', DataBlokController::class);
 });
 
 Route::group(['middleware' => ['role:mandor']], function () {
