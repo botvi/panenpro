@@ -44,10 +44,6 @@
                                     <label class="form-label">No TPH</label>
                                     <input type="text" name="no_tph" id="no_tph" class="form-control" required>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label">Brondolan</label>
-                                    <input type="number" name="brondolan" id="brondolan" class="form-control" required>
-                                </div>
                                 <div class="form-row d-flex flex-wrap justify-content-between">
                                     <div class="form-group flex-fill me-2 mb-3">
                                         <label class="form-label">Ripe</label>
@@ -71,6 +67,10 @@
                                     <label class="form-label">Jumlah Buah Per Blok</label>
                                     <input type="number" name="jumlah_buah_per_blok" id="jumlah_buah_per_blok"
                                         class="form-control" required readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Brondolan</label>
+                                    <input type="number" name="brondolan" id="brondolan" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <div class="card-footer">

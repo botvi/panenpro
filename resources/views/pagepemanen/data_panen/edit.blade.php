@@ -48,11 +48,6 @@
                                     <input type="text" name="no_tph" id="no_tph" class="form-control" required
                                         value="{{ old('no_tph', $datapanen->no_tph) }}">
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label">Brondolan</label>
-                                    <input type="number" name="brondolan" id="brondolan" class="form-control" required
-                                        value="{{ old('brondolan', $datapanen->brondolan) }}">
-                                </div>
                                 <div class="form-row d-flex flex-wrap justify-content-between">
                                     <div class="form-group flex-fill me-2 mb-3">
                                         <label class="form-label">Ripe</label>
@@ -80,6 +75,11 @@
                                     <input type="number" name="jumlah_buah_per_blok" id="jumlah_buah_per_blok"
                                         class="form-control" required readonly
                                         value="{{ old('jumlah_buah_per_blok', $datapanen->jumlah_buah_per_blok) }}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Brondolan</label>
+                                    <input type="number" name="brondolan" id="brondolan" class="form-control" required
+                                        value="{{ old('brondolan', $datapanen->brondolan) }}">
                                 </div>
                                 <div class="form-group">
                                     <div class="card-footer">

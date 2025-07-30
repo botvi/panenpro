@@ -54,7 +54,7 @@
                                                 <td>{{ $item->nama_blok }}</td>
                                                 <td>{{ $item->satuan_per_hektar }}</td>
                                                 <td>{{ number_format($item->jumlah_janjang) }}</td>
-                                                <td>{{ number_format($item->total) }}</td>
+                                                <td>{{ number_format($item->total) }}%</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -66,6 +66,16 @@
                                             <th>Satuan Per Hektar</th>
                                             <th>Jumlah Janjang</th>
                                             <th>Total</th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="5" style="text-align:right">Rata-rata Total</th>
+                                            <th>
+                                                @if(count($planakp) > 0)
+                                                    {{ number_format($planakp->avg('total'), 2) }}%
+                                                @else
+                                                    0%
+                                                @endif
+                                            </th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -102,7 +112,7 @@
                                                 <td>{{ $item->nama_blok }}</td>
                                                 <td>{{ $item->satuan_per_hektar }}</td>
                                                 <td>{{ number_format($item->jumlah_janjang) }}</td>
-                                                <td>{{ number_format($item->total) }}</td>
+                                                <td>{{ number_format($item->total) }}%</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -114,6 +124,16 @@
                                             <th>Satuan Per Hektar</th>
                                             <th>Jumlah Janjang</th>
                                             <th>Total</th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="5" style="text-align:right">Rata-rata Total</th>
+                                            <th>
+                                                @if(count($aktualakp) > 0)
+                                                    {{ number_format($aktualakp->avg('total'), 2) }}%
+                                                @else
+                                                    0%
+                                                @endif
+                                            </th>
                                         </tr>
                                     </tfoot>
                                 </table>
