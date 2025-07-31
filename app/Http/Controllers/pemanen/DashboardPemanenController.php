@@ -84,8 +84,8 @@ class DashboardPemanenController extends Controller
 
         // Get block wise harvest data
         $blockData = DataPanen::where('pemanen_id', $pemanen->id)
-            ->selectRaw('nama_blok, SUM(jumlah_buah_per_blok) as total_buah')
-            ->groupBy('nama_blok')
+            ->selectRaw('blok_id, SUM(jumlah_buah_per_blok) as total_buah')
+            ->groupBy('blok_id')
             ->orderBy('total_buah', 'desc')
             ->limit(10)
             ->get();
@@ -94,7 +94,7 @@ class DashboardPemanenController extends Controller
         $blockLabels = [];
         $blockChartData = [];
         foreach ($blockData as $block) {
-            $blockLabels[] = $block->nama_blok;
+            $blockLabels[] = $block->blok->blok;
             $blockChartData[] = $block->total_buah;
         }
 

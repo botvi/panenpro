@@ -9,9 +9,10 @@ class Mandor extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'asisten_id',
         'nama',
         'npk',
-        'user_id',
+        'user_id'
     ];
     public function user()
     {

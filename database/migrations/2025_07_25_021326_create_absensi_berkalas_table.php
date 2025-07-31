@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('pemanen_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('mandor_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('blok');
+            $table->foreignId('blok_id')->constrained('data_bloks')->onDelete('cascade')->onUpdate('cascade');
             $table->string('baris');
             $table->enum('arah_masuk', ['Barat', 'Timur']);
             $table->string('jam');

@@ -58,7 +58,7 @@
                                                 <td>{{ $m + 1 }}</td>
                                                 <td>{{ $item->pemanen->nama }}</td>
                                                 <td>
-                                                    {{ $item->blok }}
+                                                    {{ $item->blok->blok }}
                                                 </td>
                                                 <td>
                                                     {{ $item->baris }}

@@ -41,7 +41,7 @@
                                             <th>No</th>
                                             <th>Blok</th>
                                             <th>Estate</th>
-                                            <th>Adfeling</th>
+                                            <th>Afdeling</th>
                                             <th>TT</th>
                                             <th>Luas</th>
                                             <th>BJR</th>
@@ -80,7 +80,7 @@
                                             <th>No</th>
                                             <th>Blok</th>
                                             <th>Estate</th>
-                                            <th>Adfeling</th>
+                                            <th>Afdeling</th>
                                             <th>TT</th>
                                             <th>Luas</th>
                                             <th>BJR</th>

@@ -49,7 +49,12 @@
                                 
                                 <div class="form-group">
                                     <label class="form-label">Blok</label>
-                                    <input type="text" name="blok" id="blok" class="form-control" required>
+                                    <select name="blok_id" id="blok_id" class="form-control" required>
+                                        <option value="">Pilih Blok</option>
+                                        @foreach ($blok as $item)
+                                            <option value="{{ $item->id }}">{{ $item->blok }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Baris</label>
@@ -70,6 +75,7 @@
                                 <div class="form-group">
                                     <label class="form-label">Luasan</label>
                                     <input type="text" name="luasan" id="luasan" class="form-control" required>
+                                    <label class="form-label text-danger">Gunakan .(titik) sebagai ,(koma)</label>
                                 </div>
                                
                                 <div class="card-footer">

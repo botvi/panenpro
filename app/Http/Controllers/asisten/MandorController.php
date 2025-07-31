@@ -13,7 +13,7 @@ class MandorController extends Controller
 {
   public function index()
   {
-    $mandor = Mandor::with('user')->get();
+    $mandor = Mandor::with('user')->where('asisten_id', auth()->user()->id)->get();
     return view('pageasisten.datamandor.index', compact('mandor'));
   }
 
@@ -41,6 +41,7 @@ class MandorController extends Controller
 
     // Buat kepala sekolah baru
     Mandor::create([
+      'asisten_id' => auth()->user()->id,
       'user_id' => $user->id,
       'nama' => $request->nama,
       'npk' => $request->npk,
@@ -89,6 +90,7 @@ class MandorController extends Controller
 
     // Update data wali kelas
     $mandor->update([
+      'asisten_id' => auth()->user()->id,
       'nama' => $request->nama,
       'npk' => $request->npk,
     ]);

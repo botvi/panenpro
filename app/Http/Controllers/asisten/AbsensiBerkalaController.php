@@ -13,7 +13,7 @@ class AbsensiBerkalaController extends Controller
      */
     public function index()
     {
-        $absensiberkala = AbsensiBerkala::with(['pemanen', 'mandor'])->get();
+        $absensiberkala = AbsensiBerkala::with(['pemanen', 'mandor', 'blok'])->get();
 
         return view('pageasisten.absensi_berkala.index', compact('absensiberkala'));
     }

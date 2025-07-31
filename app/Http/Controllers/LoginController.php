@@ -48,6 +48,9 @@ class LoginController extends Controller
             } elseif ($user->role == 'pemanen') {
                 Alert::success('Login Successful', 'Welcome back, Pemanen!');
                 return redirect()->route('dashboard-pemanen');
+            } elseif ($user->role == 'krani') {
+                Alert::success('Login Successful', 'Welcome back, Krani!');
+                return redirect()->route('dashboard-kerani');
             } else {
                 Auth::logout();
                 Alert::error('Login Failed', 'You are not authorized to access this area.');

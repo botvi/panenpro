@@ -26,6 +26,12 @@
                         </a>
                     </li>
                     <li class="pc-item">
+                        <a href="{{ route('datakrani.index') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-user"></i></span>
+                            <span class="pc-mtext">Data Kerani</span>
+                        </a>
+                    </li>
+                    <li class="pc-item">
                         <a href="{{ route('asisten.akp.index') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
                             <span class="pc-mtext">AKP</span>
@@ -58,7 +64,7 @@
                     </li>
 
                     <li class="pc-item">
-                        <a href="#" class="pc-link">
+                        <a href="{{ route('data-rekap-akp-actual.index') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
                             <span class="pc-mtext">Rekap AKP Aktual</span>
                         </a>
@@ -138,6 +144,29 @@
                         <a href="{{ route('datapanen.index') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
                             <span class="pc-mtext">Data Panen</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        @endif
+
+        @if (Auth::user()->role == 'krani')
+            <div class="navbar-content">
+                <ul class="pc-navbar">
+                    <li class="pc-item">
+                        <a href="/dashboard-kerani" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
+                            <span class="pc-mtext">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="pc-item pc-caption">
+                        <label>Data Panenpro</label>
+                        <i class="ti ti-dashboard"></i>
+                    </li>
+                    <li class="pc-item">
+                        <a href="{{ route('data-rekap-pengiriman.index') }}" class="pc-link">   
+                            <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
+                            <span class="pc-mtext">Data Rekap Pengiriman</span>
                         </a>
                     </li>
                 </ul>

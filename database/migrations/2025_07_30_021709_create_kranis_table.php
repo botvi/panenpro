@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('kranis', function (Blueprint $table) {
-            $table->id();
-            
-            //
-
+            $table->id(); 
+            $table->foreignId('asisten_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('nama');
+            $table->string('npk');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AbsensiBerkala extends Model
 {
     use HasFactory;
-    protected $fillable = ['pemanen_id', 'mandor_id', 'blok', 'baris', 'arah_masuk', 'jam', 'luasan'];
+    protected $fillable = ['pemanen_id', 'mandor_id', 'blok_id', 'baris', 'arah_masuk', 'jam', 'luasan'];
 
     public function pemanen()
     {
@@ -18,5 +18,10 @@ class AbsensiBerkala extends Model
     public function mandor()
     {
         return $this->belongsTo(User::class);
+    }
+    
+    public function blok()
+    {
+        return $this->belongsTo(DataBlok::class);
     }
 }

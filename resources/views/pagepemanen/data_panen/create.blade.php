@@ -37,8 +37,13 @@
                             <form action="{{ route('datapanen.store') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <label class="form-label">Nama Blok</label>
-                                    <input type="text" name="nama_blok" id="nama_blok" class="form-control" required>
+                                    <label class="form-label">Blok</label>
+                                    <select name="blok_id" id="blok_id" class="form-control" required>
+                                        <option value="">Pilih Blok</option>
+                                        @foreach ($blok as $item)
+                                            <option value="{{ $item->id }}">{{ $item->blok }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">No TPH</label>

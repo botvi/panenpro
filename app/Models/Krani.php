@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Krani extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'asisten_id',
+        'nama',
+        'npk',
+        'user_id'
+    ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

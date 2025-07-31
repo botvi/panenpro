@@ -49,7 +49,7 @@
                                         value="{{ old('estate', $blok->estate) }}">
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Adfeling</label>
+                                    <label class="form-label">Afdeling</label>
                                     <input type="text" name="adfeling" id="adfeling" class="form-control" required
                                         value="{{ old('adfeling', $blok->adfeling) }}">
                                 </div>

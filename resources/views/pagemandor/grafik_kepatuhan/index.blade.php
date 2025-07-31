@@ -28,6 +28,29 @@
       <div class="row">
         <!-- Grafik Kepatuhan table start -->
         <div class="col-md-12">
+          <!-- Filter Form -->
+          <div class="card mb-3">
+            <div class="card-body">
+                <form action="{{ route('grafikkepatuhan.index') }}" method="GET">
+                    <div class="row align-items-end">
+                        <div class="col-md-3">
+                            <label for="filter_tanggal" class="form-label">Filter Tanggal</label>
+                            <input type="date" name="filter_tanggal" id="filter_tanggal" class="form-control" value="{{ $filterTanggal }}">
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="ti ti-filter me-1"></i>Filter
+                            </button>
+                            <a href="{{ route('grafikkepatuhan.index') }}" class="btn btn-secondary">
+                                <i class="ti ti-refresh me-1"></i>Reset
+                            </a>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+
           <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0">Tabel Data Grafik Kepatuhan</h5>
@@ -43,6 +66,7 @@
                       <th>Keluar Buah</th>
                       <th>Alas Karung Brondol</th>
                       <th>Panen Blok 17</th>
+                      <th>Stampel Panen</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -83,6 +107,17 @@
                         @endif
                       </td>
                       <td>
+                        @if($item->stampel_panen == 'Ya')
+                          <span style="background-color: #d1fae5; border-radius: 50%; padding: 6px 9px; display: inline-block;">
+                            <i class="ti ti-check text-success"></i>
+                          </span>
+                        @else
+                          <span style="background-color: #fee2e2; border-radius: 50%; padding: 6px 9px; display: inline-block;">
+                              <i class="ti ti-x text-danger"></i>
+                          </span>
+                        @endif
+                      </td>
+                      <td>
                         <a href="{{ route('grafikkepatuhan.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
                         <form action="{{ route('grafikkepatuhan.destroy', $item->id) }}" method="POST" style="display:inline;" class="delete-form">
                             @csrf
@@ -100,6 +135,7 @@
                       <th>Keluar Buah</th>
                       <th>Alas Karung Brondol</th>
                       <th>Panen Blok 17</th>
+                      <th>Stampel Panen</th>
                       <th>Aksi</th>
                     </tr>
                   </tfoot>

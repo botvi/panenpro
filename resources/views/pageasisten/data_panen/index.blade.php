@@ -39,6 +39,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Nama Pemanen</th>
                                             <th>Nama Blok</th>
                                             <th>No TPH</th>
                                             <th>Ripe</th>
@@ -56,7 +57,8 @@
                                         @foreach ($datapanen as $m => $item)
                                             <tr>
                                                 <td>{{ $m + 1 }}</td>
-                                                <td>{{ $item->nama_blok }}</td>
+                                                <td>{{ $item->pemanen->nama }}</td>
+                                                <td>{{ $item->blok->blok }}</td>
                                                 <td>{{ $item->no_tph }}</td>
                                                 <td>{{ $item->ripe }}</td>
                                                 <td>{{ $item->over_ripe }}</td>
@@ -70,6 +72,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
+                                            <th>Nama Pemanen</th>
                                             <th>Nama Blok</th>
                                             <th>No TPH</th>
                                             <th>Ripe</th>

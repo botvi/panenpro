@@ -4,6 +4,7 @@ namespace App\Http\Controllers\pemanen;
 
 use App\Models\DataPanen;
 use App\Models\Pemanen;
+use App\Models\DataBlok;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\Controller;
@@ -12,19 +13,20 @@ class DataPanenController extends Controller
 {
   public function index()
   {
-    $datapanen = DataPanen::with('pemanen')->where('pemanen_id', auth()->user()->id)->get();
+    $datapanen = DataPanen::with('pemanen', 'blok')->where('pemanen_id', auth()->user()->id)->get();
     return view('pagepemanen.data_panen.index', compact('datapanen'));
   }
 
   public function create()
   {
-    return view('pagepemanen.data_panen.create');
+    $blok = DataBlok::all();
+    return view('pagepemanen.data_panen.create', compact('blok'));
   }
 
   public function store(Request $request)
   {
     $request->validate([
-      'nama_blok' => 'required',
+      'blok_id' => 'required',
       'no_tph' => 'required',
       'ripe' => 'required',
       'over_ripe' => 'required',
@@ -37,7 +39,7 @@ class DataPanenController extends Controller
     // Buat data panen baru
     DataPanen::create([
       'pemanen_id' => auth()->user()->id,
-      'nama_blok' => $request->nama_blok,
+      'blok_id' => $request->blok_id,
       'no_tph' => $request->no_tph,
       'ripe' => $request->ripe,
       'over_ripe' => $request->over_ripe,
@@ -54,14 +56,15 @@ class DataPanenController extends Controller
  
   public function edit($id)
   {
-    $datapanen = DataPanen::with('pemanen')->findOrFail($id);
-    return view('pagepemanen.data_panen.edit', compact('datapanen'));
+    $datapanen = DataPanen::with('pemanen', 'blok')->findOrFail($id);
+    $blok = DataBlok::all();
+    return view('pagepemanen.data_panen.edit', compact('datapanen', 'blok'));
   }
 
   public function update(Request $request, $id)
   {
     $request->validate([
-      'nama_blok' => 'required',
+      'blok_id' => 'required',
       'no_tph' => 'required',
       'ripe' => 'required',
       'over_ripe' => 'required',
@@ -75,7 +78,7 @@ class DataPanenController extends Controller
     $datapanen = DataPanen::findOrFail($id);
     $datapanen->update([
       'pemanen_id' => auth()->user()->id,
-      'nama_blok' => $request->nama_blok,
+      'blok_id' => $request->blok_id,
       'no_tph' => $request->no_tph,
       'ripe' => $request->ripe,
       'over_ripe' => $request->over_ripe,

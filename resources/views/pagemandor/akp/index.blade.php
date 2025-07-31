@@ -54,7 +54,7 @@
                                         @foreach ($planakp as $m => $item)
                                             <tr>
                                                 <td>{{ $m + 1 }}</td>
-                                                <td>{{ $item->nama_blok }}</td>
+                                                <td>{{ $item->blok->blok }}</td>
                                                 <td>{{ $item->satuan_per_hektar }}</td>
                                                 <td>{{ $item->jumlah_janjang }}</td>
                                                 <td>{{ $item->total }}%</td>
@@ -130,7 +130,7 @@
                                         @foreach ($aktualakp as $n => $item)
                                             <tr>
                                                 <td>{{ $n + 1 }}</td>
-                                                <td>{{ $item->nama_blok }}</td>
+                                                <td>{{ $item->blok->blok }}</td>
                                                 <td>{{ $item->satuan_per_hektar }}</td>
                                                 <td>{{ $item->jumlah_janjang }}</td>
                                                 <td>{{ $item->total }}%</td>

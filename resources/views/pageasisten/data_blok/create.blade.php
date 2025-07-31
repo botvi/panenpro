@@ -45,8 +45,8 @@
                                     <input type="text" name="estate" class="form-control" placeholder="Estate" required>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Adfeling</label>
-                                    <input type="text" name="adfeling" class="form-control" placeholder="Adfeling" required>
+                                    <label class="form-label">Afdeling</label>
+                                    <input type="text" name="adfeling" class="form-control" placeholder="Afdeling" required>
                                 </div>
                                 <div class="form-row row g-3 mb-3">
                                     <div class="col-md-3">

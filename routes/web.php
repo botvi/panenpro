@@ -18,16 +18,22 @@ use App\Http\Controllers\mandor\{
 use App\Http\Controllers\asisten\{
     DashboardAsistenController,
     MandorController,
+    KraniController,
     AKPController as AsistenAKPController,
     GrafikKepatuhanController as AsistenGrafikKepatuhanController,
     AbsensiPemanenController as AsistenAbsensiPemanenController,
     AbsensiBerkalaController as AsistenAbsensiBerkalaController,
     DataBlokController,
     DataPanenController as AsistenDataPanenController,
+    RekapAkpActualController as AsistenRekapAkpActualController,
 };
 use App\Http\Controllers\pemanen\{
     DashboardPemanenController,
     DataPanenController,
+};
+use App\Http\Controllers\krani\{
+    DashboardKeraniController,
+    DataRekapPengirimanController,
 };
 
 /*
@@ -57,12 +63,15 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['middleware' => ['role:asisten']], function () {
     Route::get('/dashboard-asisten', [DashboardAsistenController::class, 'index'])->name('dashboard-asisten');
     Route::resource('datamandor', MandorController::class);
+    Route::resource('datakrani', KraniController::class);
     Route::get('/asisten/akp', [AsistenAKPController::class, 'indexAKP'])->name('asisten.akp.index');
     Route::get('/asisten/grafikkepatuhan', [AsistenGrafikKepatuhanController::class, 'index'])->name('asisten.grafikkepatuhan.index');
     Route::get('/asisten/absensipemanen', [AsistenAbsensiPemanenController::class, 'index'])->name('asisten.absensipemanen.index');
     Route::get('/asisten/absensiberkala', [AsistenAbsensiBerkalaController::class, 'index'])->name('asisten.absensiberkala.index');
     Route::get('/asisten/datapanen', [AsistenDataPanenController::class, 'index'])->name('asisten.datapanen.index');
     Route::resource('datablok', DataBlokController::class);
+    Route::resource('data-rekap-akp-actual', AsistenRekapAkpActualController::class);
+    Route::get('/get-blok-sph/{id}', [DataRekapPengirimanController::class, 'getBlokSph'])->name('get-blok-sph');
 });
 
 Route::group(['middleware' => ['role:mandor']], function () {
@@ -94,4 +103,10 @@ Route::group(['middleware' => ['role:mandor']], function () {
 Route::group(['middleware' => ['role:pemanen']], function () {
     Route::get('/dashboard-pemanen', [DashboardPemanenController::class, 'index'])->name('dashboard-pemanen');
     Route::resource('datapanen', DataPanenController::class);
+});
+
+Route::group(['middleware' => ['role:krani']], function () {
+    Route::get('/dashboard-kerani', [DashboardKeraniController::class, 'index'])->name('dashboard-kerani');
+    Route::resource('data-rekap-pengiriman', DataRekapPengirimanController::class);
+    Route::get('/get-blok-sph/{id}', [DataRekapPengirimanController::class, 'getBlokSph'])->name('get-blok-sph');
 });

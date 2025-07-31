@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\mandor;
 
 use App\Models\AktualAKP;
+use App\Models\DataBlok;
 use App\Models\PlanAKP;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,21 +16,22 @@ class AKPController extends Controller
 
   public function indexAKP()
   {
-    $planakp = PlanAKP::with('mandor')->where('mandor_id', auth()->user()->id)->get();
-    $aktualakp = AktualAKP::with('mandor')->where('mandor_id', auth()->user()->id)->get();
+    $planakp = PlanAKP::with('mandor', 'blok')->where('mandor_id', auth()->user()->id)->get();
+    $aktualakp = AktualAKP::with('mandor', 'blok')->where('mandor_id', auth()->user()->id)->get();
     return view('pagemandor.akp.index', compact('planakp', 'aktualakp'));
   }
 
   // PLAN AKP
   public function createPlanAKP()
   {
-    return view('pagemandor.akp.plan.create');
+    $blok = DataBlok::all();
+    return view('pagemandor.akp.plan.create', compact('blok'));
   }
 
   public function storePlanAKP(Request $request)
   {
     $request->validate([
-      'nama_blok' => 'required',
+      'blok_id' => 'required',
       'satuan_per_hektar' => 'required',
       'jumlah_janjang' => 'required',
       'total' => 'required',
@@ -40,7 +42,7 @@ class AKPController extends Controller
     // Buat plan akp
     PlanAKP::create([
       'mandor_id' => auth()->user()->id,
-      'nama_blok' => $request->nama_blok,
+      'blok_id' => $request->blok_id,
       'satuan_per_hektar' => $request->satuan_per_hektar,
       'jumlah_janjang' => $request->jumlah_janjang,
       'total' => $request->total,
@@ -53,14 +55,15 @@ class AKPController extends Controller
 
   public function editPlanAKP($id)
   {
-    $planakp = PlanAKP::with('mandor')->findOrFail($id);
-    return view('pagemandor.akp.plan.edit', compact('planakp'));
+    $planakp = PlanAKP::with('mandor', 'blok')->findOrFail($id);
+    $blok = DataBlok::all();
+    return view('pagemandor.akp.plan.edit', compact('planakp', 'blok'));
   }
 
   public function updatePlanAKP(Request $request, $id)
   {
     $request->validate([
-      'nama_blok' => 'required',
+      'blok_id' => 'required',
       'satuan_per_hektar' => 'required',
       'jumlah_janjang' => 'required',
       'total' => 'required',
@@ -72,7 +75,7 @@ class AKPController extends Controller
 
     // Update data plan akp
     $planakp->update([
-      'nama_blok' => $request->nama_blok,
+      'blok_id' => $request->blok_id,
       'satuan_per_hektar' => $request->satuan_per_hektar,
       'jumlah_janjang' => $request->jumlah_janjang,
       'total' => $request->total,
@@ -96,13 +99,14 @@ class AKPController extends Controller
 
   public function createAktualAKP()
   {
-    return view('pagemandor.akp.aktual.create');
+    $blok = DataBlok::all();
+    return view('pagemandor.akp.aktual.create', compact('blok'));
   }
 
   public function storeAktualAKP(Request $request)
   {
     $request->validate([
-      'nama_blok' => 'required',
+      'blok_id' => 'required',
       'satuan_per_hektar' => 'required',
       'jumlah_janjang' => 'required',
       'total' => 'required',
@@ -113,7 +117,7 @@ class AKPController extends Controller
     // Buat aktual akp
     AktualAKP::create([
       'mandor_id' => auth()->user()->id,
-      'nama_blok' => $request->nama_blok,
+      'blok_id' => $request->blok_id,
       'satuan_per_hektar' => $request->satuan_per_hektar,
       'jumlah_janjang' => $request->jumlah_janjang,
       'total' => $request->total,
@@ -126,14 +130,15 @@ class AKPController extends Controller
 
   public function editAktualAKP($id)
   {
-    $aktualakp = AktualAKP::with('mandor')->findOrFail($id);
-    return view('pagemandor.akp.aktual.edit', compact('aktualakp'));
+    $aktualakp = AktualAKP::with('mandor', 'blok')->findOrFail($id);
+    $blok = DataBlok::all();
+    return view('pagemandor.akp.aktual.edit', compact('aktualakp', 'blok'));
   }
 
   public function updateAktualAKP(Request $request, $id)
   {
     $request->validate([
-      'nama_blok' => 'required',
+      'blok_id' => 'required',
       'satuan_per_hektar' => 'required',
       'jumlah_janjang' => 'required',
       'total' => 'required',
@@ -145,7 +150,7 @@ class AKPController extends Controller
 
     // Update data aktual akp
     $aktualakp->update([
-      'nama_blok' => $request->nama_blok,
+      'blok_id' => $request->blok_id,
       'satuan_per_hektar' => $request->satuan_per_hektar,
       'jumlah_janjang' => $request->jumlah_janjang,
       'total' => $request->total,

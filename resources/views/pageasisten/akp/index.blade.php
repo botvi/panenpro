@@ -36,48 +36,56 @@
                         <div class="card-body">
                             <div class="dt-responsive table-responsive">
                                 <table id="table-planakp" class="table table-striped table-bordered nowrap">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Mandor</th>
-                                            <th>Nama Blok</th>
-                                            <th>Satuan Per Hektar</th>
-                                            <th>Jumlah Janjang</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($planakp as $m => $item)
-                                            <tr>
-                                                <td>{{ $m + 1 }}</td>
-                                                <td>{{ $item->mandor->user->name ?? 'N/A' }}</td>
-                                                <td>{{ $item->nama_blok }}</td>
-                                                <td>{{ $item->satuan_per_hektar }}</td>
-                                                <td>{{ number_format($item->jumlah_janjang) }}</td>
-                                                <td>{{ number_format($item->total) }}%</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Mandor</th>
-                                            <th>Nama Blok</th>
-                                            <th>Satuan Per Hektar</th>
-                                            <th>Jumlah Janjang</th>
-                                            <th>Total</th>
-                                        </tr>
-                                        <tr>
-                                            <th colspan="5" style="text-align:right">Rata-rata Total</th>
-                                            <th>
-                                                @if(count($planakp) > 0)
-                                                    {{ number_format($planakp->avg('total'), 2) }}%
-                                                @else
-                                                    0%
-                                                @endif
-                                            </th>
-                                        </tr>
-                                    </tfoot>
+                                  <thead>
+                                    <tr>
+                                      <th>No</th>
+                                      <th>Nama Mandor</th>
+                                      <th>Nama Blok</th>
+                                      <th>Satuan Per Hektar</th>
+                                      <th>Jumlah Janjang</th>
+                                      <th>Total</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    @php
+                                        $totalSum = 0;
+                                        $totalCount = 0;
+                                    @endphp
+                                    @foreach($planakp as $m => $item)
+                                    <tr>
+                                      <td>{{ $m+1 }}</td>
+                                      <td>{{ $item->mandor->nama ?? 'N/A' }}</td>
+                                      <td>{{ $item->nama_blok }}</td>
+                                      <td>{{ $item->satuan_per_hektar }}</td>
+                                      <td>{{ $item->jumlah_janjang }}</td>
+                                      <td>{{ $item->total }}%</td>
+                                    </tr>
+                                    @php
+                                        $totalSum += $item->total;
+                                        $totalCount++;
+                                    @endphp
+                                    @endforeach
+                                  </tbody>
+                                  <tfoot>
+                                    <tr>
+                                      <th>No</th>
+                                      <th>Nama Mandor</th>
+                                      <th>Nama Blok</th>
+                                      <th>Satuan Per Hektar</th>
+                                      <th>Jumlah Janjang</th>
+                                      <th>Total</th>
+                                    </tr>
+                                    <tr>
+                                      <th colspan="5" style="text-align:right">Rata-rata Total</th>
+                                      <th colspan="2">
+                                        @if($totalCount > 0)
+                                          {{ number_format($totalSum / $totalCount, 2) }}%
+                                        @else
+                                          0%
+                                        @endif
+                                      </th>
+                                    </tr>
+                                  </tfoot>
                                 </table>
                             </div>
                         </div>
@@ -94,48 +102,56 @@
                         <div class="card-body">
                             <div class="dt-responsive table-responsive">
                                 <table id="table-aktualakp" class="table table-striped table-bordered nowrap">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Mandor</th>
-                                            <th>Nama Blok</th>
-                                            <th>Satuan Per Hektar</th>
-                                            <th>Jumlah Janjang</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($aktualakp as $n => $item)
-                                            <tr>
-                                                <td>{{ $n + 1 }}</td>
-                                                <td>{{ $item->mandor->user->name ?? 'N/A' }}</td>
-                                                <td>{{ $item->nama_blok }}</td>
-                                                <td>{{ $item->satuan_per_hektar }}</td>
-                                                <td>{{ number_format($item->jumlah_janjang) }}</td>
-                                                <td>{{ number_format($item->total) }}%</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Mandor</th>
-                                            <th>Nama Blok</th>
-                                            <th>Satuan Per Hektar</th>
-                                            <th>Jumlah Janjang</th>
-                                            <th>Total</th>
-                                        </tr>
-                                        <tr>
-                                            <th colspan="5" style="text-align:right">Rata-rata Total</th>
-                                            <th>
-                                                @if(count($aktualakp) > 0)
-                                                    {{ number_format($aktualakp->avg('total'), 2) }}%
-                                                @else
-                                                    0%
-                                                @endif
-                                            </th>
-                                        </tr>
-                                    </tfoot>
+                                  <thead>
+                                    <tr>
+                                      <th>No</th>
+                                      <th>Nama Mandor</th>
+                                      <th>Nama Blok</th>
+                                      <th>Satuan Per Hektar</th>
+                                      <th>Jumlah Janjang</th>
+                                      <th>Total</th>
+                                    </tr>
+                                  </thead>
+                                  @php
+                                    $totalSum2 = 0;
+                                    $totalCount2 = 0;
+                                  @endphp
+                                  <tbody>
+                                    @foreach($aktualakp as $n => $item)
+                                    <tr>
+                                      <td>{{ $n+1 }}</td>
+                                      <td>{{ $item->mandor->nama ?? 'N/A' }}</td>
+                                      <td>{{ $item->nama_blok }}</td>
+                                      <td>{{ $item->satuan_per_hektar }}</td>
+                                      <td>{{ $item->jumlah_janjang }}</td>
+                                      <td>{{ $item->total }}%</td>
+                                    </tr>
+                                    @php
+                                        $totalSum2 += $item->total;
+                                        $totalCount2++;
+                                    @endphp
+                                    @endforeach
+                                  </tbody>
+                                  <tfoot>
+                                    <tr>
+                                      <th>No</th>
+                                      <th>Nama Mandor</th>
+                                      <th>Nama Blok</th>
+                                      <th>Satuan Per Hektar</th>
+                                      <th>Jumlah Janjang</th>
+                                      <th>Total</th>
+                                    </tr>
+                                    <tr>
+                                      <th colspan="5" style="text-align:right">Rata-rata Total</th>
+                                      <th colspan="2">
+                                        @if($totalCount2 > 0)
+                                          {{ number_format($totalSum2 / $totalCount2, 2) }}%
+                                        @else
+                                          0%
+                                        @endif
+                                      </th>
+                                    </tr>
+                                  </tfoot>
                                 </table>
                             </div>
                         </div>

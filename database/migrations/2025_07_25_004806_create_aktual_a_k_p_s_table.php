@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('aktual_a_k_p_s', function (Blueprint $table) {
             $table->id();
             $table->foreignId('mandor_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('nama_blok');
+            $table->foreignId('blok_id')->constrained('data_bloks')->onDelete('cascade')->onUpdate('cascade');
             $table->string('satuan_per_hektar');
             $table->string('jumlah_janjang');
             $table->string('total');

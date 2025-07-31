@@ -29,11 +29,11 @@
                 <!-- Grafik Kepatuhan table start -->
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Tabel Data Panen</h5>
-                            <a href="{{ route('datapanen.create') }}" class="btn btn-sm btn-primary">Tambah Data
-                                Panen</a>
-                        </div>
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Tabel Data Panen</h5>
+                                    <a href="{{ route('datapanen.create') }}" class="btn btn-sm btn-primary">Tambah Data
+                                        Panen</a>
+                                </div>
                         <div class="card-body">
                             <div class="dt-responsive table-responsive">
                                 <table id="simpletable" class="table table-striped table-bordered nowrap">
@@ -56,7 +56,7 @@
                                             <tr>
                                                 <td>{{ $m + 1 }}</td>
                                                 <td>
-                                                    {{ $item->nama_blok }}
+                                                    {{ $item->blok->blok }}
                                                 </td>
                                                 <td>
                                                     {{ $item->no_tph }}

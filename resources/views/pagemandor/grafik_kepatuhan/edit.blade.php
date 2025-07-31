@@ -70,13 +70,23 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label class="form-label">Panen Blok 17</label>
+                                    <label class="form-label">Panen Pokok 17</label>
                                     <select name="panen_blok_17" id="panen_blok_17" class="form-control" required>
                                         <option value="">Pilih</option>
                                         <option value="Ya" {{ $grafikkepatuhan->panen_blok_17 == 'Ya' ? 'selected' : '' }}>Ya</option>
                                         <option value="Tidak" {{ $grafikkepatuhan->panen_blok_17 == 'Tidak' ? 'selected' : '' }}>Tidak</option>
                                     </select>
                                     <small>Pilih Ya atau Tidak untuk Panen Blok 17.</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Stampel Panen</label>
+                                    <select name="stampel_panen" id="stampel_panen" class="form-control" required>
+                                        <option value="">Pilih</option>
+                                        <option value="Ya" {{ $grafikkepatuhan->stampel_panen == 'Ya' ? 'selected' : '' }}>Ya</option>
+                                        <option value="Tidak" {{ $grafikkepatuhan->stampel_panen == 'Tidak' ? 'selected' : '' }}>Tidak</option>
+                                    </select>
+                                    <small>Pilih Ya atau Tidak untuk Stampel Panen.</small>
                                 </div>
                                 
                                 <div class="card-footer">

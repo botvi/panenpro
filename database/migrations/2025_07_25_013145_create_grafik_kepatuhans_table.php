@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('keluar_buah');
             $table->string('alas_karung_brondol');
             $table->string('panen_blok_17');
+            $table->string('stampel_panen');
             $table->timestamps();
         });
     }

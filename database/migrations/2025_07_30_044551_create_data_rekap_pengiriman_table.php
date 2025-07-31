@@ -13,6 +13,20 @@ return new class extends Migration
     {
         Schema::create('data_rekap_pengirimen', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('blok_id')->constrained('data_bloks')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('no_tph');
+            $table->string('kode_panen');
+            $table->string('ripe');
+            $table->string('over');
+            $table->string('ur');
+            $table->string('udr');
+            $table->string('total');
+            $table->string('brd');
+            $table->string('bs');
+            $table->string('bjr');
+            $table->string('sph');
+            $table->string('akp_actual');
             $table->timestamps();
         });
     }

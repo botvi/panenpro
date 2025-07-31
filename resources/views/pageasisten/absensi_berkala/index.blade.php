@@ -59,7 +59,7 @@
                                                 <td>{{ $item->pemanen->nama }}</td>
                                                 <td>{{ $item->mandor->nama ?? 'N/A' }}</td>
                                                 <td>
-                                                    <span class="badge bg-primary">{{ $item->blok }}</span>
+                                                    <span class="badge bg-primary">{{ $item->blok->blok }}</span>
                                                 </td>
                                                 <td>
                                                     <span class="badge bg-success">{{ $item->baris }}</span>
